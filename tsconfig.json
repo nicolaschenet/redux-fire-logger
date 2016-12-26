@@ -1,11 +1,15 @@
 {
   "compilerOptions": {
     "module": "commonjs",
-    "outDir": ".",
+    "moduleResolution": "node",
+    "outDir": "build",
     "target": "es5",
     "removeComments": true
   },
   "files": [
     "src/index.ts"
+  ],
+  "exclude": [
+    "node_modules"
   ]
 }

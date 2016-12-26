@@ -1,9 +1,13 @@
-/* eslint no-console:off */
+/* tslint:disable:no-console */
 
-const logger = store => next => action => {
-  console.log('dispatching', action)
-  const result = next(action)
-  console.log('next state', store.getState())
+import { IAction } from './interfaces'
+import { diff } from 'deep-diff'
+
+const logger = (options: Object = {}) => (store: any) => (next: any) => (action: IAction): Object => {
+  const currentState: Object = store.getState()
+  const result: Object = next(action)
+  const nextState: Object = store.getState()
+  console.log(`diff from ${action.type}`, diff(currentState, nextState), options)
   return result
 }
 
