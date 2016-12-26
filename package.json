@@ -2,13 +2,14 @@
   "name": "redux-fire-logger",
   "version": "0.0.0",
   "description": "Log all your Redux state changes in real time with Firebase",
-  "main": "index.js",
+  "main": "build/index.js",
   "author": "Nicolas Chenet <ironic51@gmail.com>",
   "license": "MIT",
   "devDependencies": {
-    "eslint": "^3.12.2",
-    "eslint-plugin-typescript": "^0.1.0",
-    "typescript": "^2.1.4",
-    "typescript-eslint-parser": "^1.0.0"
+    "tslint": "^4.2.0",
+    "typescript": "^2.1.4"
+  },
+  "dependencies": {
+    "deep-diff": "^0.3.4"
   }
 }
