@@ -1,0 +1,8 @@
+{
+  "name": "redux-fire-logger",
+  "version": "0.0.0",
+  "description": "Log all your Redux state changes in real time with Firebase",
+  "main": "index.js",
+  "author": "Nicolas Chenet <ironic51@gmail.com>",
+  "license": "MIT"
+}
