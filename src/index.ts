@@ -1,13 +1,32 @@
 /* tslint:disable:no-console */
 
-import { IAction } from './interfaces'
-import { diff } from 'deep-diff'
+import { IAction, IOptions } from './interfaces'
 
-const logger = (options: Object = {}) => (store: any) => (next: any) => (action: IAction): Object => {
+import { contains } from 'ramda'
+import { diff } from 'deep-diff';
+
+const defaultOptions: IOptions = {
+  excludedActionTypes: []
+}
+
+const log = (action: IAction, currentState: Object, nextState: Object): void => {
+  const timestamp: number = new Date().getTime()
+  const stateDiff: any[] = diff(currentState, nextState)
+  const { type } = action
+  console.log(`Redux Fire Logger | Diff from ${type}`, stateDiff, timestamp)
+}
+
+const logger = (options: IOptions) => (store: any) => (next: any) => (action: IAction): Object => {
+  options = {
+    ...defaultOptions,
+    ...options
+  }
   const currentState: Object = store.getState()
   const result: Object = next(action)
-  const nextState: Object = store.getState()
-  console.log(`diff from ${action.type}`, diff(currentState, nextState), options)
+  if (contains(action.type, options.excludedActionTypes)) {
+    return result
+  }
+  log(action, currentState, store.getState())
   return result
 }
 
