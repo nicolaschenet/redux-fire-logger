@@ -12,7 +12,9 @@
     "typescript": "^2.1.4"
   },
   "dependencies": {
+    "@types/whatwg-fetch": "0.0.33",
     "deep-diff": "^0.3.4",
+    "firebase": "^3.6.4",
     "ramda": "^0.22.1"
   }
 }
